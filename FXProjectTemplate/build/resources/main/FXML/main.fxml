@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btnShowWords" layoutX="69.0" layoutY="74.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="233.0" text="Show all words there are">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnEditWord" layoutX="93.0" layoutY="328.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="233.0" text="Edit a word">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRemoveWord" layoutX="98.0" layoutY="241.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="233.0" text="Remove a word">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAddWord" layoutX="82.0" layoutY="164.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="233.0" text="Add a new word">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
