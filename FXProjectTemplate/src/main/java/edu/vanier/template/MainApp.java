@@ -27,9 +27,7 @@ import javafx.stage.Stage;
  * @author Frostybee.
  */
 public class MainApp extends Application{
-    
-   // Stage primaryStage;
-    
+        
     public static void main(String[] args) {
         launch(args);
     }
