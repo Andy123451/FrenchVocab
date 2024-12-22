@@ -24,5 +24,10 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <Label fx:id="lbWarning" layoutX="512.0" layoutY="119.0" prefHeight="44.0" prefWidth="215.0" text="Only put numbers" textFill="RED">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

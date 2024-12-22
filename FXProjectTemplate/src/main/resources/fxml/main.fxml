@@ -13,13 +13,18 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnQuiz" layoutX="27.0" layoutY="164.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="266.0" text="Quiz (enter 0 for all words)">
+      <Button fx:id="btnQuiz" layoutX="67.0" layoutY="157.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="333.0" text="Quiz (enter 0 for all words)">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="txtNumber" layoutX="516.0" layoutY="168.0" prefHeight="44.0" prefWidth="149.0" />
-      <Label layoutX="301.0" layoutY="168.0" prefHeight="44.0" prefWidth="215.0" text="Enter number of words:">
+      <TextField fx:id="txtNumber" layoutX="642.0" layoutY="159.0" prefHeight="44.0" prefWidth="149.0" />
+      <Label layoutX="420.0" layoutY="160.0" prefHeight="44.0" prefWidth="215.0" text="Enter number of words:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbWarning" layoutX="640.0" layoutY="103.0" prefHeight="44.0" prefWidth="215.0" text="Only put numbers" textFill="RED">
          <font>
             <Font size="20.0" />
          </font>

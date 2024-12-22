@@ -48,7 +48,7 @@ public class Quiz extends Stage{
        setTitle("Quiz");
        this.wordsCtr=num;
        um();
-        System.out.println(wordsCtr);
+        //System.out.println(wordsCtr);
     }
 
     public void um() throws IOException{

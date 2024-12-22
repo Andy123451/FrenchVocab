@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableCell;
@@ -41,10 +42,11 @@ public class MainAppController extends Stage{
     @FXML
     Button btnShowWords, btnQuiz;
         
+    @FXML
+    Label lbWarning;
     TableView<MapEntry> tableView;
     
     public static LinkedHashMap<String, String> wordMap  = new LinkedHashMap<>();
-;
             
     int wordCtr=0;
     
@@ -53,7 +55,7 @@ public class MainAppController extends Stage{
         buttons();
         initModality(Modality.APPLICATION_MODAL);
         initStyle(StageStyle.UTILITY);
-
+        lbWarning.setText(" ");        
     }
     
     public void loadingMap() {
@@ -74,7 +76,7 @@ public class MainAppController extends Stage{
                     // Add the key-value pair to the HashMap
                     wordMap.put(key, value);
                 } else {
-                    System.out.println("Skipping invalid line: " + line);
+                   // System.out.println("Skipping invalid line: " + line);
                 }
             }
         } catch (IOException e) {
@@ -88,7 +90,7 @@ public class MainAppController extends Stage{
         
         btnShowWords.setText("Show all the words there are (" + wordCtr + ")");
 
-        System.out.println("total number of words: " + wordCtr);
+        //System.out.println("total number of words: " + wordCtr);
         ObservableList<MapEntry> data = FXCollections.observableArrayList();
         wordMap.forEach((key, value) -> data.add(new MapEntry(key, value)));
 
@@ -166,9 +168,13 @@ public class MainAppController extends Stage{
              String nx = txtNumber.getText();
         if(isDigit(nx)==true && !nx.isEmpty()){
           wordCount = Integer.parseInt(nx);
-          System.out.println("ada " + wordCount + " s " + nx);
+          //System.out.println("ada " + wordCount + " s " + nx);
+          Quiz obj = new Quiz(wordCount);
+          lbWarning.setText(" ");
         }
-             Quiz obj = new Quiz(wordCount);
+        else{
+            lbWarning.setText("Only input numbers");
+        }
          } catch (IOException ex) {
              Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
          }

@@ -1,5 +1,5 @@
 sinon otherwise
-proud fier
+fier proud
 époque era
 ainé older/elder
 taille size
@@ -7,3 +7,14 @@ fils/fille_unique only_child
 chauve bald
 antipathique unfriendly
 pull sweater
+animé motivated/driven
+milieu environment/setting
+solidarité solidarity
+soit...soit... whether...or...
+autant_que as_much_as
+en_tant_que as_a
+vide(er) (to)empty
+pilules/comprimés pills/tablets
+de_rien/je_vous_en_prie you're_welcome(casual/formal)
+un_pari a_bet
+
