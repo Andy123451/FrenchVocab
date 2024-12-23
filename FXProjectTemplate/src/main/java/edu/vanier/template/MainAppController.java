@@ -16,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -37,6 +38,9 @@ import javafx.stage.StageStyle;
 public class MainAppController extends Stage{
 
     @FXML
+    ChoiceBox cbSort;
+    
+    @FXML
     TextField txtNumber;
     
     @FXML
@@ -55,7 +59,10 @@ public class MainAppController extends Stage{
         buttons();
         initModality(Modality.APPLICATION_MODAL);
         initStyle(StageStyle.UTILITY);
-        lbWarning.setText(" ");        
+        lbWarning.setText(" ");     
+        
+        cbSort.getItems().addAll("Insertion order", "Alphabetical");
+   
     }
     
     public void loadingMap() {
@@ -169,7 +176,12 @@ public class MainAppController extends Stage{
         if(isDigit(nx)==true && !nx.isEmpty()){
           wordCount = Integer.parseInt(nx);
           //System.out.println("ada " + wordCount + " s " + nx);
+          if(wordCount!=0){
           Quiz obj = new Quiz(wordCount);
+          }
+          else if(wordCount==0){
+          Quiz obj = new Quiz(wordCtr);
+          }
           lbWarning.setText(" ");
         }
         else{
