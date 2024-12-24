@@ -34,3 +34,11 @@ miel honey
 tiroir drawer
 fait_maison homemade
 peau skin
+ail garlic
+ça_ne_va_pas? are_you_okay?
+autant that_much("not_that_much!")
+casserole pan
+huile oil
+confiture jam
+pot jar
+sable sand
