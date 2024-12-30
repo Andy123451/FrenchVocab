@@ -42,3 +42,5 @@ huile oil
 confiture jam
 pot jar
 sable sand
+avoir_du_mal having_trouble
+trier sort

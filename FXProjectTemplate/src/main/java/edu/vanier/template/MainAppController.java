@@ -7,7 +7,10 @@ package edu.vanier.template;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +38,7 @@ import javafx.stage.StageStyle;
  *
  * @author 15144
  */
-public class MainAppController extends Stage{
+public class MainAppController extends Stage implements Comparable<MapEntry>{
 
     @FXML
     ChoiceBox cbSort;
@@ -48,10 +51,12 @@ public class MainAppController extends Stage{
         
     @FXML
     Label lbWarning;
+    
     TableView<MapEntry> tableView;
     
     public static LinkedHashMap<String, String> wordMap  = new LinkedHashMap<>();
-            
+    public static LinkedHashMap<String, String> alphaMap  = new LinkedHashMap<>();
+        
     int wordCtr=0;
     
     public void initialize() throws Exception{        
@@ -60,14 +65,13 @@ public class MainAppController extends Stage{
         initModality(Modality.APPLICATION_MODAL);
         initStyle(StageStyle.UTILITY);
         lbWarning.setText(" ");     
+        cbSort.setValue("Insertion order");//defaults the tableview to insertion order
         
         cbSort.getItems().addAll("Insertion order", "Alphabetical");
-   
+        txtNumber.setText("0");
     }
     
-    public void loadingMap() {
-        //wordMap = new LinkedHashMap<>();
-
+    public void loadingMap(){//loads all words and translations into a hashmap
         try (BufferedReader br = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream("/Vocab/Voc.txt")))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -92,22 +96,27 @@ public class MainAppController extends Stage{
 
         // Print the HashMap to verify
         for (String key : wordMap.keySet()) {
-           wordCtr++;// System.out.println("Key: " + key + ", Value: " + map.get(key));
+           wordCtr++;
         }
         
         btnShowWords.setText("Show all the words there are (" + wordCtr + ")");
 
-        //System.out.println("total number of words: " + wordCtr);
-        ObservableList<MapEntry> data = FXCollections.observableArrayList();
-        wordMap.forEach((key, value) -> data.add(new MapEntry(key, value)));
+        
+        
+        //BELOW IS SORTING BY ALPHABETICAL ORDER
+        
+        
+    }
 
-        tableView = new TableView<>();
+            int wordCount = 0;
+    
+    public void tables(ObservableList data){
+    tableView = new TableView<>();
 
         // Create the Key column
         TableColumn<MapEntry, String> keyColumn = new TableColumn<>("French");
         keyColumn.setCellValueFactory(new PropertyValueFactory<>("key"));
         keyColumn.setPrefWidth(300);
-       // keyColumn.setResizable(false);
         keyColumn.setCellFactory(column -> new TableCell<MapEntry, String>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -126,7 +135,6 @@ public class MainAppController extends Stage{
         TableColumn<MapEntry, String> valueColumn = new TableColumn<>("English");
         valueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
         valueColumn.setPrefWidth(300);
-       // valueColumn.setResizable(false);
         valueColumn.setCellFactory(column -> new TableCell<MapEntry, String>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -146,7 +154,7 @@ public class MainAppController extends Stage{
 
         // Set the data in the TableView
         tableView.setItems(data);
-        tableView.setPrefSize(600, 600);
+        tableView.setPrefSize(600, 700);
         tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
          
         tableView.setRowFactory(tv -> {
@@ -154,15 +162,79 @@ public class MainAppController extends Stage{
             row.setPrefHeight(40); // Set row height
             return row;
         });
-        
     }
-
-            int wordCount = 0;
-
-    public void buttons(){
+    
+    public void buttons(){       
         
-        
+     
      btnShowWords.setOnAction((event)->{
+         
+         if(cbSort.getValue().equals("Insertion order")){//goes by insertion order
+         ObservableList<MapEntry> data = FXCollections.observableArrayList();
+         wordMap.forEach((key, value) -> data.add(new MapEntry(key, value)));
+         tables(data);
+         }
+         
+         else if(cbSort.getValue().equals("Alphabetical")){
+             
+          ArrayList <String> keys2 = new ArrayList<>();
+        
+          for (String key : wordMap.keySet()) {//adds keys to arraylist
+              keys2.add(key);
+          
+          }
+        //below is considering french notations like ç are not counted as "c" but rather not a letter
+          ArrayList <String> weirdFrench = new ArrayList<>();
+          ArrayList <String> fixedFrench = new ArrayList<>();
+
+          for(int i=0; i<keys2.size();i++){
+              
+              char start = keys2.get(i).charAt(0);
+              
+            if(start == 'ç' || start == 'à' || start == 'è' || start == 'ù' || start == 'é' || start == 'â'  || start == 'ê' || start == 'î' || start == 'ô' || start == 'û' || start == 'ë' || start == 'ï' || start == 'ü' || start == 'æ' || start == 'œ'){
+              String x = "";
+                switch(start){
+                  case 'à', 'â', 'æ': x = "a" + keys2.get(i).substring(1); break;
+                  case 'ç': x = "c" + keys2.get(i).substring(1); break;
+                  case 'è', 'é', 'ê', 'ë': x = "e" + keys2.get(i).substring(1); break;
+                  case 'î', 'ï': x = "i" + keys2.get(i).substring(1); break;
+                  case 'ô', 'œ': x = "o" + keys2.get(i).substring(1); break;
+                  case 'ù', 'û', 'ü': x = "u" + keys2.get(i).substring(1); break;
+                  default: System.out.println("bruh");
+              }
+                
+              
+              fixedFrench.add(x);//replaced ç with c
+              weirdFrench.add(keys2.get(i));// adds the original word with ç
+              
+              keys2.remove(i);              
+           }            
+          }
+          
+          for (String x : fixedFrench) {
+               keys2.add(x);
+          }
+          
+          Collections.sort(keys2);//sorts the keys by alphabetical order
+          
+          for(int i=0; i<keys2.size(); i++){
+          
+              for(int j=0; j<fixedFrench.size(); j++){
+                  if(keys2.get(i).equals(fixedFrench.get(j))){
+                     keys2.set(i, weirdFrench.get(j));
+                  }
+              }
+          }
+          
+          for(int i=0; i<wordCtr;i++){//making a second hashmap with alphabetically arranged words
+             alphaMap.put(keys2.get(i), wordMap.get(keys2.get(i)));
+          }
+          
+         ObservableList<MapEntry> data = FXCollections.observableArrayList();
+         alphaMap.forEach((key, value) -> data.add(new MapEntry(key, value)));
+         tables(data);
+         }
+         
          VBox vbox = new VBox(tableView);
          Scene scene = new Scene(vbox, 400, 700);
          setScene(scene);
@@ -193,7 +265,7 @@ public class MainAppController extends Stage{
     });
     }    
     
-    public boolean isDigit(String x){
+    public boolean isDigit(String x){//took from sem 3 assignment 1
         
         boolean flag = true;
         for(int i=0;i<x.length();i++){
@@ -205,5 +277,10 @@ public class MainAppController extends Stage{
         
         if(flag==true){return true;}
         else{return false;}
+    }
+
+    @Override
+    public int compareTo(MapEntry o) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
