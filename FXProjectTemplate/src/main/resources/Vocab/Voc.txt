@@ -44,3 +44,9 @@ pot jar
 sable sand
 avoir_du_mal having_trouble
 trier sort
+odeur scent
+lardon bacon
+maïs corn
+en_direct live(on_tv)
+chic stylish
+merveilleuse(eux) wonderful

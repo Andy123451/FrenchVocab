@@ -183,7 +183,7 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
               keys2.add(key);
           
           }
-        //below is considering french notations like ç are not counted as "c" but rather not a letter
+        //below is considering french notations like ç are not counted as "c" but rather not a letter so they don't get sorted like regular letters properly
           ArrayList <String> weirdFrench = new ArrayList<>();
           ArrayList <String> fixedFrench = new ArrayList<>();
 
@@ -202,7 +202,6 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
                   case 'ù', 'û', 'ü': x = "u" + keys2.get(i).substring(1); break;
                   default: System.out.println("bruh");
               }
-                
               
               fixedFrench.add(x);//replaced ç with c
               weirdFrench.add(keys2.get(i));// adds the original word with ç
@@ -221,7 +220,7 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
           
               for(int j=0; j<fixedFrench.size(); j++){
                   if(keys2.get(i).equals(fixedFrench.get(j))){
-                     keys2.set(i, weirdFrench.get(j));
+                     keys2.set(i, weirdFrench.get(j));//replaces the replaced c and e and wtv with their original counterparts
                   }
               }
           }
