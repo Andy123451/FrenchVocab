@@ -43,12 +43,10 @@ public class Quiz extends Stage{
     boolean flag = true;
     
     public Quiz(int num) throws IOException{
-    //   initModality(Modality.APPLICATION_MODAL);       
-       //initStyle(StageStyle.UTILITY);
+
        setTitle("Quiz");
        this.wordsCtr=num;
        um();
-        //System.out.println(wordsCtr);
     }
 
     public void um() throws IOException{

@@ -47,10 +47,10 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
     TextField txtNumber;
     
     @FXML
-    Button btnShowWords, btnQuiz;
+    Button btnShowWords, btnQuiz, btnAddWord;
         
     @FXML
-    Label lbWarning;
+    Label lbWarning, lbWords;
     
     TableView<MapEntry> tableView;
     
@@ -99,9 +99,8 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
            wordCtr++;
         }
         
-        btnShowWords.setText("Show all the words there are (" + wordCtr + ")");
-
-        
+        btnShowWords.setText("Show all the words there are");
+        lbWords.setText("There are " + wordCtr + " words");      
         
         //BELOW IS SORTING BY ALPHABETICAL ORDER
         
@@ -164,8 +163,7 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
         });
     }
     
-    public void buttons(){       
-        
+    public void buttons(){               
      
      btnShowWords.setOnAction((event)->{
          
@@ -262,6 +260,14 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
              Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
          }
     });
+     
+     btnAddWord.setOnAction((event)->{
+         try {
+             AddWord obj = new AddWord();
+         } catch (IOException ex) {
+             Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+     });
     }    
     
     public boolean isDigit(String x){//took from sem 3 assignment 1

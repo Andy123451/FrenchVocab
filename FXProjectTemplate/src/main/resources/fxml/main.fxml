@@ -9,32 +9,42 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="btnShowWords" layoutX="69.0" layoutY="74.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="331.0" text="Show all words there are">
+      <Button fx:id="btnShowWords" layoutX="69.0" layoutY="144.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="331.0" text="Show all words there are">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnQuiz" layoutX="71.0" layoutY="182.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="333.0" text="Quiz (enter 0 for all words)">
+      <Button fx:id="btnQuiz" layoutX="68.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="333.0" text="Quiz (enter 0 for all words)">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="txtNumber" layoutX="652.0" layoutY="191.0" prefHeight="44.0" prefWidth="149.0" />
-      <Label layoutX="420.0" layoutY="187.0" prefHeight="44.0" prefWidth="215.0" text="Enter number of words:">
+      <TextField fx:id="txtNumber" layoutX="652.0" layoutY="256.0" prefHeight="44.0" prefWidth="149.0" />
+      <Label layoutX="421.0" layoutY="252.0" prefHeight="44.0" prefWidth="215.0" text="Enter number of words:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lbWarning" layoutX="652.0" layoutY="132.0" prefHeight="44.0" prefWidth="215.0" text="Only put numbers" textFill="RED">
+      <Label fx:id="lbWarning" layoutX="652.0" layoutY="204.0" prefHeight="44.0" prefWidth="215.0" text="Only put numbers" textFill="RED">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="cbSort" layoutX="539.0" layoutY="76.0" prefHeight="46.0" prefWidth="161.0" />
-      <Label layoutX="444.0" layoutY="78.0" prefHeight="44.0" prefWidth="84.0" text="Sort by:">
+      <ChoiceBox fx:id="cbSort" layoutX="529.0" layoutY="147.0" prefHeight="46.0" prefWidth="161.0" />
+      <Label layoutX="438.0" layoutY="148.0" prefHeight="44.0" prefWidth="84.0" text="Sort by:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
+      <Label fx:id="lbWords" layoutX="256.0" layoutY="47.0" prefHeight="46.0" prefWidth="215.0" text="There are">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAddWord" layoutX="68.0" layoutY="358.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="333.0" text="Add a new word">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
