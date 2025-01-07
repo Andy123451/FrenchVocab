@@ -263,7 +263,7 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
      
      btnAddWord.setOnAction((event)->{
          try {
-             AddWord obj = new AddWord();
+             AddWord obj = new AddWord(wordMap);
          } catch (IOException ex) {
              Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
          }
