@@ -19,8 +19,8 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="txtNumber" layoutX="652.0" layoutY="256.0" prefHeight="44.0" prefWidth="149.0" />
-      <Label layoutX="421.0" layoutY="252.0" prefHeight="44.0" prefWidth="215.0" text="Enter number of words:">
+      <TextField fx:id="txtNumber" layoutX="653.0" layoutY="256.0" prefHeight="44.0" prefWidth="149.0" />
+      <Label layoutX="438.0" layoutY="252.0" prefHeight="44.0" prefWidth="215.0" text="Enter number of words:">
          <font>
             <Font size="20.0" />
          </font>
@@ -30,7 +30,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="cbSort" layoutX="529.0" layoutY="147.0" prefHeight="46.0" prefWidth="161.0" />
+      <ChoiceBox fx:id="cbSort" layoutX="512.0" layoutY="148.0" prefHeight="46.0" prefWidth="161.0" />
       <Label layoutX="438.0" layoutY="148.0" prefHeight="44.0" prefWidth="84.0" text="Sort by:">
          <font>
             <Font size="20.0" />

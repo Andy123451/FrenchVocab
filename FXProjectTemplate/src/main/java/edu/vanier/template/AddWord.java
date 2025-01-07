@@ -52,7 +52,7 @@ public class AddWord extends Stage{
         loader.setController(this);
         Parent root = loader.load();
 
-        Scene scene = new Scene(root,600,400);
+        Scene scene = new Scene(root);
         setScene(scene);
         setResizable(false);
         show();
@@ -81,28 +81,13 @@ public class AddWord extends Stage{
       }
      
      if(repeatedWord == false){
+//problem is I was using Resources/Vocab/Voc.txt so it was trying to look for Resources under FXProjectTemplate
+//but upon manually opening the folder I see that the actual Voc.txt is under "src" in FXProjectTemplate
          try {
              String wordFr = tfFrench.getText().trim().replace(" ", "_");//original word with spaces
              String wordEng = tfEnglish.getText().trim().replace(" ", "_");
-             //System.out.println("Attempting to write to file: " + wordFr + " " + wordEng);
 
                     File file = new File("src/main/resources/Vocab/Voc.txt");
-                    //System.out.println("File Path: " + file.getAbsolutePath()); // Debugging line
-//System.out.println("Working Directory: " + System.getProperty("user.dir"));
-
-                    //File parentDir = file.getParentFile();
-                   // if (!parentDir.exists()) {
-                      //  parentDir.mkdirs(); // Ensure parent directories exist
-                     //   System.out.println("Directories created: " + parentDir.getAbsolutePath()); // Debugging line
-                    //}
-
-                    // Check if the file exists
-                   // if (!file.exists()) {
-                  //      System.out.println("File does not exist, creating a new one.");
-                  //  } else {
-                    //    System.out.println("File already exists.");
-                    //}
-
                     
                     // Write to file
                     try (FileWriter writer = new FileWriter(file, true)) { // Append mode
