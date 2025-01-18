@@ -58,4 +58,8 @@ d'abonnés subscribers
 gestion management
 paisible peaceful
 entourer surround
-cc c
+feux_d'artifice firework
+église church
+sympa nice(casual_remark_like_"that's_nice")
+exigence requirement
+novatrice innovative

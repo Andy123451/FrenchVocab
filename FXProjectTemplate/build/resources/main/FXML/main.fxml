@@ -14,7 +14,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnQuiz" layoutX="68.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="333.0" text="Quiz (enter 0 for all words)">
+      <Button fx:id="btnQuizFR" layoutX="68.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="161.0" text="Quiz(FR)">
          <font>
             <Font size="18.0" />
          </font>
@@ -46,5 +46,15 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Button fx:id="btnQuizENG" layoutX="240.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="161.0" text="Quiz(ENG)">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="438.0" layoutY="278.0" prefHeight="44.0" prefWidth="215.0" text="(enter 0 for all words)">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

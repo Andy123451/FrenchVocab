@@ -47,7 +47,7 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
     TextField txtNumber;
     
     @FXML
-    Button btnShowWords, btnQuiz, btnAddWord;
+    Button btnShowWords, btnQuizFR, btnQuizENG, btnAddWord;
         
     @FXML
     Label lbWarning, lbWords;
@@ -58,6 +58,8 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
     public static LinkedHashMap<String, String> alphaMap  = new LinkedHashMap<>();
         
     int wordCtr=0;
+    
+    String FRorENG = " ";
     
     public void initialize() throws Exception{        
         loadingMap();
@@ -239,17 +241,41 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
          show();
      });
      
-     btnQuiz.setOnAction((event)->{
+     btnQuizFR.setOnAction((event)->{
          try {
              String nx = txtNumber.getText();
         if(isDigit(nx)==true && !nx.isEmpty()){
           wordCount = Integer.parseInt(nx);
+          FRorENG = "FR";
           //System.out.println("ada " + wordCount + " s " + nx);
           if(wordCount!=0){
-          Quiz obj = new Quiz(wordCount);
+          Quiz obj = new Quiz(wordCount, FRorENG);
           }
           else if(wordCount==0){
-          Quiz obj = new Quiz(wordCtr);
+          Quiz obj = new Quiz(wordCtr, FRorENG);
+          }
+          lbWarning.setText(" ");
+        }
+        else{
+            lbWarning.setText("Only input numbers");
+        }
+         } catch (IOException ex) {
+             Logger.getLogger(MainAppController.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    });
+     
+     btnQuizENG.setOnAction((event)->{
+         try {
+             String nx = txtNumber.getText();
+        if(isDigit(nx)==true && !nx.isEmpty()){
+          wordCount = Integer.parseInt(nx);
+          FRorENG = "ENG";
+          //System.out.println("ada " + wordCount + " s " + nx);
+          if(wordCount!=0){
+          Quiz obj = new Quiz(wordCount, FRorENG);
+          }
+          else if(wordCount==0){
+          Quiz obj = new Quiz(wordCtr, FRorENG);
           }
           lbWarning.setText(" ");
         }

@@ -30,22 +30,26 @@ public class Quiz extends Stage{
     int wordsCtr;
     
     @FXML
-    Label lbFrench, lbEnglish, lbNumber;
+    Label lbTop, lbBottom, lbNumber;
     
     @FXML
     Button btnNext;
     
     LinkedHashMap<String, String> quiz;
     ArrayList <String> french;
-    
+    ArrayList <String> english;
+
     int i=0;
     
     boolean flag = true;
     
-    public Quiz(int num) throws IOException{
+    String FRorENG = " ";
+    
+    public Quiz(int num, String x) throws IOException{
 
        setTitle("Quiz");
        this.wordsCtr=num;
+       this.FRorENG=x;
        um();
     }
 
@@ -59,35 +63,41 @@ public class Quiz extends Stage{
         setResizable(false);
         show();
         
-        loadingQuiz();    
-        buttons();
+        loadingQuiz();  
+        
+        if(FRorENG.equals("FR")){
+        buttonsFR();
+        }
+        else if(FRorENG.equals("ENG")){
+        buttonsENG();
+        }
     }
     
-    public void buttons(){     
+    public void buttonsFR(){     
 
         btnNext.setOnAction((event)->{
             
           if(i<wordsCtr-1 && flag == false){   
           i++;//sets the new word
-          lbFrench.setText(french.get(i));
-          lbEnglish.setVisible(false);
+          lbTop.setText(french.get(i));
+          lbBottom.setVisible(false);
           lbNumber.setText("#" + (i+1));
           flag=true;
           btnNext.setText("Reveal");
           }
 
           else if(flag==true){
-          lbEnglish.setVisible(true);//reveals the english
+          lbBottom.setVisible(true);//reveals the english
           String eng = quiz.get(french.get(i));
-          lbEnglish.setText(eng);
+          lbBottom.setText(eng);
           btnNext.setText("Next");
           flag=false;
           }
           
           else if(i==wordsCtr-1){
           btnNext.setText("Exit");
-          lbEnglish.setVisible(false);
-          lbFrench.setText("Quiz over");
+          lbBottom.setVisible(false);
+          lbTop.setText("Quiz over");
           i++;
           }
           else if(i==wordsCtr){
@@ -96,32 +106,85 @@ public class Quiz extends Stage{
         });       
     }
     
-    
-    public void loadingQuiz(){
-         int ctr = 0;
-         LinkedHashMap<String, String> copy = MainAppController.wordMap;
-         quiz = new LinkedHashMap<String, String>();
-                 
-         french = new ArrayList<String>();
-
-         for(String key: copy.keySet()){            
-             french.add(key);//adds keys to list french
-         }
-         
-         Collections.shuffle(french);//shuffles the list
-
-         for(String m : french){//adds shuffled keys and corresponding values to new map
-             if(ctr<wordsCtr){
-             quiz.put(m,copy.get(m));
-             ctr++;
-             }
-         }
-         
-         for (String key : quiz.keySet()) {
-        //   System.out.println("Key: " + key + ", Value: " + quiz.get(key));
+    public void buttonsENG() {
+    btnNext.setOnAction((event) -> {
+        if (i < wordsCtr - 1 && flag == false) {
+            i++; // Sets the new word
+            lbTop.setText(english.get(i)); // Show the English word
+            lbBottom.setVisible(false); // Hide the French word initially
+            lbNumber.setText("#" + (i + 1));
+            flag = true;
+            btnNext.setText("Reveal");
+        } else if (flag == true) {
+            lbBottom.setVisible(true); // Reveal the French word
+            String eng = english.get(i); // Get the English word at index i
+            String fr = quiz.get(eng); // Get the corresponding French word from the quiz map
+            lbBottom.setText(fr); // Display the French word in lbBottom
+            btnNext.setText("Next");
+            flag = false;
+        } else if (i == wordsCtr - 1) {
+            btnNext.setText("Exit");
+            lbBottom.setVisible(false);
+            lbTop.setText("Quiz over");
+            i++;
+        } else if (i == wordsCtr) {
+            close();
         }
-         
-         lbFrench.setText(french.get(0));
+    });
+}
+    
+        public void loadingQuiz() {
+    if (FRorENG.equals("FR")) {
+        int ctr = 0;
+        LinkedHashMap<String, String> copy = MainAppController.wordMap;
+        quiz = new LinkedHashMap<String, String>();
+        french = new ArrayList<String>();
+
+        // Populate the french list with keys (French words)
+        for (String key : copy.keySet()) {
+            french.add(key);
+        }
+
+        // Shuffle the french list
+        Collections.shuffle(french);
+
+        // Populate the quiz map with French word (key) and corresponding English word (value)
+        for (String m : french) {
+            if (ctr < wordsCtr) {
+                quiz.put(m, copy.get(m)); // French word -> English word mapping
+                ctr++;
+            }
+        }
+
+        lbTop.setText(french.get(0));
+        } 
+    
+    else if (FRorENG.equals("ENG")) {
+        int ctr = 0;
+        LinkedHashMap<String, String> copy = MainAppController.wordMap;
+        quiz = new LinkedHashMap<String, String>();
+        english = new ArrayList<String>();
+
+        // Populate the english list with values (English words)
+        for (String key : copy.keySet()) {
+            String value = copy.get(key);
+            english.add(value);
+        }
+
+        // Shuffle the english list
+        Collections.shuffle(english);
+
+        // Populate the quiz map with English word (key) and corresponding French word (value)
+        for (String m : english) {
+            if (ctr < wordsCtr) {
+                quiz.put(m, copy.get(m)); // English word -> French word mapping
+                ctr++;
+            }
+        }
+
+        lbTop.setText(english.get(0)); // Set the first English word to lbTop
+    }
+}
     }
     
-}
+
