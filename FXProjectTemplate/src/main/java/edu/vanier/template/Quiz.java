@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -137,6 +138,7 @@ public class Quiz extends Stage{
     if (FRorENG.equals("FR")) {
         int ctr = 0;
         LinkedHashMap<String, String> copy = MainAppController.wordMap;
+
         quiz = new LinkedHashMap<String, String>();
         french = new ArrayList<String>();
 
@@ -161,14 +163,19 @@ public class Quiz extends Stage{
     
     else if (FRorENG.equals("ENG")) {
         int ctr = 0;
-        LinkedHashMap<String, String> copy = MainAppController.wordMap;
+        LinkedHashMap<String, String> copy = MainAppController.wordMap;//French, English
+        LinkedHashMap<String, String> copy2 = new LinkedHashMap<>();
+        
+        for (Map.Entry<String, String> entry : copy.entrySet()) {
+             copy2.put(entry.getValue(),entry.getKey());//flipping the keys and values of the original map
+        }
+        
         quiz = new LinkedHashMap<String, String>();
         english = new ArrayList<String>();
 
-        // Populate the english list with values (English words)
-        for (String key : copy.keySet()) {
-            String value = copy.get(key);
-            english.add(value);
+        // Populate the english list with keys of copy2 (English words)
+        for (String key : copy2.keySet()) {
+            english.add(key);
         }
 
         // Shuffle the english list
@@ -177,7 +184,7 @@ public class Quiz extends Stage{
         // Populate the quiz map with English word (key) and corresponding French word (value)
         for (String m : english) {
             if (ctr < wordsCtr) {
-                quiz.put(m, copy.get(m)); // English word -> French word mapping
+                quiz.put(m, copy2.get(m)); // English word -> French word mapping
                 ctr++;
             }
         }
