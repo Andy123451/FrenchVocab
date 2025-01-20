@@ -14,7 +14,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnQuizFR" layoutX="68.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="161.0" text="Quiz(FR)">
+      <Button fx:id="btnQuizFR" layoutX="68.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="161.0" text="Quiz (FR)">
          <font>
             <Font size="18.0" />
          </font>
@@ -46,7 +46,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="btnQuizENG" layoutX="240.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="161.0" text="Quiz(ENG)">
+      <Button fx:id="btnQuizENG" layoutX="240.0" layoutY="248.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="161.0" text="Quiz (ENG)">
          <font>
             <Font size="18.0" />
          </font>

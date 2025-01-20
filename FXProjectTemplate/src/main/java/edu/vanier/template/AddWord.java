@@ -60,7 +60,17 @@ public class AddWord extends Stage{
         lbWarning.setVisible(false);
         
         System.out.println(tfFrench.getText());
-            
+       
+    scene.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case ENTER: // Activate the button when Enter is pressed
+                    btnAdd.fire();
+                    break;
+                default:
+                    break;
+            }
+        });
+    
     btnAdd.setOnAction((event)->{
         
        if(tfFrench.getText().isEmpty() || tfEnglish.getText().isEmpty()){
