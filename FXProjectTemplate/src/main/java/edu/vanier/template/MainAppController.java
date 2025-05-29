@@ -77,16 +77,16 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
         try (BufferedReader br = new BufferedReader(new InputStreamReader(MainApp.class.getResourceAsStream("/Vocab/Voc.txt")))) {
             String line;
             while ((line = br.readLine()) != null) {
-                // Split the line into two parts by space
+                //split the line into two parts by space
                 String[] parts = line.split(" ");
 
-                // Ensure the line has at least two parts
+                //ensure the line has at least two parts
                 if (parts.length == 2) {
-                    // Replace underscores with spaces
+                    //replace underscores with spaces
                     String key = parts[0].replace("_", " ");
                     String value = parts[1].replace("_", " ");
 
-                    // Add the key-value pair to the HashMap
+                    //add the key-value pair to the HashMap
                     wordMap.put(key, value);
                 } else {
                    // System.out.println("Skipping invalid line: " + line);

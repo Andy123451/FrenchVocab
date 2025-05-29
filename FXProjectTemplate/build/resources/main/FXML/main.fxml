@@ -36,7 +36,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lbWords" layoutX="256.0" layoutY="47.0" prefHeight="46.0" prefWidth="215.0" text="There are">
+      <Label fx:id="lbWords" layoutX="256.0" layoutY="47.0" prefHeight="46.0" prefWidth="650.0" text="There are">
          <font>
             <Font size="24.0" />
          </font>
