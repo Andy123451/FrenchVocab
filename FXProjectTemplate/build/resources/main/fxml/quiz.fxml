@@ -18,7 +18,7 @@
          </font>
       </Label>
       <Button fx:id="btnNext" layoutX="514.0" layoutY="322.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="67.0" text="Reveal" />
-      <Label fx:id="lbBottom" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="200.0" prefHeight="64.0" prefWidth="515.0">
+      <Label fx:id="lbBottom" alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="200.0" prefHeight="116.0" prefWidth="515.0">
          <font>
             <Font size="30.0" />
          </font>
