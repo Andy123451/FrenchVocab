@@ -48,13 +48,15 @@ public class Quiz extends Stage{
     
     public Quiz(int num, String x) throws IOException{
 
-       setTitle("Quiz");
+       setTitle("Quiz");       
        this.wordsCtr=num;
        this.FRorENG=x;
        um();
     }
 
     public void um() throws IOException{
+        
+       
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/quiz.fxml"));
         loader.setController(this);
         Parent root = loader.load();
@@ -76,6 +78,9 @@ public class Quiz extends Stage{
     
     public void buttonsFR(){     
 
+        lbBottom.setWrapText(true);
+        lbBottom.setMaxWidth(515);
+        
         btnNext.setOnAction((event)->{
             
           if(i<wordsCtr-1 && flag == false){   
@@ -108,6 +113,9 @@ public class Quiz extends Stage{
     }
     
     public void buttonsENG() {
+        lbBottom.setWrapText(true);
+        lbBottom.setMaxWidth(515);
+        
     btnNext.setOnAction((event) -> {
         if (i < wordsCtr - 1 && flag == false) {
             i++; // Sets the new word
