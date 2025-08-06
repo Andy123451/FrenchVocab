@@ -25,6 +25,7 @@ import javafx.stage.StageStyle;
 /**
  *
  * @author 15144
+ * testing github desktop 2025-08-02
  */
 public class Quiz extends Stage{
     
@@ -61,7 +62,7 @@ public class Quiz extends Stage{
         loader.setController(this);
         Parent root = loader.load();
 
-        Scene scene = new Scene(root,600,400);
+        Scene scene = new Scene(root);
         setScene(scene);
         setResizable(false);
         show();
@@ -79,7 +80,7 @@ public class Quiz extends Stage{
     public void buttonsFR(){     
 
         lbBottom.setWrapText(true);
-        lbBottom.setMaxWidth(515);
+        lbBottom.setMaxWidth(lbBottom.getWidth());
         
         btnNext.setOnAction((event)->{
             
@@ -114,7 +115,7 @@ public class Quiz extends Stage{
     
     public void buttonsENG() {
         lbBottom.setWrapText(true);
-        lbBottom.setMaxWidth(515);
+        lbBottom.setMaxWidth(lbBottom.getWidth());
         
     btnNext.setOnAction((event) -> {
         if (i < wordsCtr - 1 && flag == false) {
