@@ -235,7 +235,7 @@ public class MainAppController extends Stage implements Comparable<MapEntry>{
          }
          
          VBox vbox = new VBox(tableView);
-         Scene scene = new Scene(vbox, 400, 700);
+         Scene scene = new Scene(vbox, 700, 700);
          setScene(scene);
          setTitle("TableView from Text File");
          show();
